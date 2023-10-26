@@ -8,8 +8,8 @@ class TokenService {
 
     async generateToken(payload) {
         const now = Date.now();
-        const accessToken = jwt.sign({...payload, now}, process.env.JWT_ACCESS_SECKET, {expiresIn: '5s'});
-        const refreshToken = jwt.sign({...payload, now}, process.env.JWT_REFRESH_SECRET, {expiresIn: `${this.refreshMaxAge}s`});
+        const accessToken = jwt.sign({...payload, now}, process.env.JWT_ACCESS_SECKET, {expiresIn: '5m'});
+        const refreshToken = jwt.sign({...payload, now}, process.env.JWT_REFRESH_SECRET, {expiresIn: `${this.refreshMaxAge}d`});
 
         return {
             refreshToken,
@@ -45,7 +45,10 @@ class TokenService {
 
     async validateRefreshToken(token) {
         try {
-            return jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+            console.log(token);
+            const res = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+            console.log(res)
+            return res;
         } catch (e) {
             return null;
         }
