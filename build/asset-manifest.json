@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e631683c.css",
+    "main.js": "/static/js/main.69dd0221.js",
+    "static/media/meet.png": "/static/media/meet.24b6430381fa8eec560f.png",
+    "static/media/vegetables.png": "/static/media/vegetables.f0a9395b7bc63d3052ab.png",
+    "static/media/backery.png": "/static/media/backery.c2032ae948f2f0669d30.png",
+    "static/media/grocery.png": "/static/media/grocery.3862f67987f7c993d740.png",
+    "static/media/sweets.png": "/static/media/sweets.7623a2445e3f82057816.png",
+    "static/media/milk.png": "/static/media/milk.01461b3104810959fcb6.png",
+    "index.html": "/index.html",
+    "main.e631683c.css.map": "/static/css/main.e631683c.css.map",
+    "main.69dd0221.js.map": "/static/js/main.69dd0221.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e631683c.css",
+    "static/js/main.69dd0221.js"
+  ]
+}
