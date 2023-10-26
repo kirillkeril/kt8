@@ -8,7 +8,7 @@ class TokenService {
 
     async generateToken(payload) {
         const now = Date.now();
-        const accessToken = jwt.sign({...payload, now}, process.env.JWT_ACCESS_SECKET, {expiresIn: '5m'});
+        const accessToken = jwt.sign({...payload, now}, process.env.JWT_ACCESS_SECKET, {expiresIn: '5s'});
         const refreshToken = jwt.sign({...payload, now}, process.env.JWT_REFRESH_SECRET, {expiresIn: `${this.refreshMaxAge}d`});
 
         return {

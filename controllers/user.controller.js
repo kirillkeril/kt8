@@ -66,7 +66,6 @@ class UserController {
             const accessToken = authHeader.split(" ")[1];
 
             const user = await UserService.getUser(accessToken);
-            console.log(user);
             return res.send(`Привет, ${user.email}!`);
         } catch (e) {
             next(e);

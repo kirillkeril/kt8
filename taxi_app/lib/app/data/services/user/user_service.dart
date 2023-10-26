@@ -26,6 +26,7 @@ class UserService {
         handler.next(options);
       },
       onError: (e, handler) async{
+        print("a");
         if (e.response?.statusCode == 401) {
           if (await _authService.refresh()) {
             try {
