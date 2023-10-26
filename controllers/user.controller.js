@@ -72,15 +72,6 @@ class UserController {
             next(e);
         }
     }
-    async activate(req, res, next) {
-        try {
-            const activationLink = req.params.link;
-            await userService.activate(activationLink);
-            return res.redirect(process.env.API_PATH);
-        } catch (e) {
-            next(e);
-        }
-    }
 
     async setRole(req, res, next) {
         try{

@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import {articleRouter, productRouter, usersRouter} from "./routes/index.js";
+import {usersRouter} from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import mongoose from 'mongoose';
 import errorsMiddleware from "./middleware/error-midlevare.js";
@@ -22,8 +22,6 @@ app.use(cookieParser());
 app.use(express.static('build'));
 
 app.use('/api/users', usersRouter);
-app.use('/api/products', productRouter);
-app.use('/api/articles', articleRouter);
 app.use(errorsMiddleware);
 
 

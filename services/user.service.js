@@ -1,8 +1,6 @@
 import UserModel from "../models/user-model.js";
 import userModel from "../models/user-model.js";
 import bcrypt from "bcrypt";
-import {v4} from "uuid";
-import emailService from "./email.service.js";
 import tokenService from "./token.service.js";
 import UserDto from "../dto/user.dto.js";
 import ApiErrors from "../errors/ApiErrors.js";
@@ -14,10 +12,8 @@ class UserService {
         if (candidate) throw ApiErrors.BadRequest('User already exists');
 
         const encryptedPassword = await bcrypt.hash(password, 3);
-        const activationLink = v4(); // рандомная ссылка для активации
 
-        const user = await UserModel.create({email, password: encryptedPassword, activationLink});
-        await emailService.sentActivationLink(email, activationLink);
+        const user = await UserModel.create({email, password: encryptedPassword});
 
         const userDto = new UserDto(user);
         const tokens = await tokenService.generateToken({...userDto});
@@ -25,16 +21,6 @@ class UserService {
 
         return {...tokens, user: userDto}
     }
-
-    async activate(activationLink) {
-        const user = await userModel.findOne({activationLink: activationLink});
-        if (!user) {
-            throw ApiErrors.BadRequest("Invalid activation link");
-        }
-        user.isActivated = true;
-        user.save();
-    }
-
 
     async login(email, password) {
         const user = await UserModel.findOne({email: email});

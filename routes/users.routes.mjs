@@ -18,8 +18,6 @@ usersRouter.post('/logout', userController.logout);
 
 usersRouter.post('/refresh', userController.refresh);
 
-usersRouter.get('/activate/:link', userController.activate);
-
 usersRouter.post('/setRole/:id', userController.setRole);
 
 usersRouter.delete('/delete/:id', authMiddleware, adminOnly, userController.deleteUser);
